@@ -1,3 +1,4 @@
+// PokemonList.jsx
 import React, { useState, useEffect } from "react";
 
 const PokemonList = ({ selectedType, pokemonList, onBackClick }) => {
@@ -29,11 +30,16 @@ const PokemonList = ({ selectedType, pokemonList, onBackClick }) => {
     setSelectedPokemon(pokemonName);
   };
 
+  const handleBackClick = () => {
+    setSelectedPokemon(null);
+    setPokemonDetails(null);
+  };
+
   const showPokemonDetails = () => {
     if (pokemonDetails) {
       return (
         <div>
-          <button onClick={onBackClick}>Volver</button>
+          <button onClick={handleBackClick}>Volver</button>
           <h2>Detalles de {pokemonDetails.name}</h2>
           <p>Altura: {pokemonDetails.height}</p>
           <p>Peso: {pokemonDetails.weight}</p>
@@ -54,7 +60,7 @@ const PokemonList = ({ selectedType, pokemonList, onBackClick }) => {
             src={pokemonDetails.sprites.front_default}
             alt={pokemonDetails.name}
           />
-          {/* Aquí podrías agregar detalles sobre evoluciones e información adicional */}
+          {/* Detalles sobre evoluciones y otra información */}
         </div>
       );
     }
